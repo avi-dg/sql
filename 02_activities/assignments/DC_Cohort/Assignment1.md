@@ -207,7 +207,11 @@ Link if you encounter a paywall: https://archive.is/srKHV or https://web.archive
 
 Consider, for example, concepts of fariness, inequality, social structures, marginalization, intersection of technology and society, etc.
 
+Common databases/data systems I encounter in my day-to-day life are healthcare databases (e.g. electronic patient records), financial databases (e.g. online stock trading), and the massive databased underpinning social media platforms like Instagram. Healthcare databases aim to apply the values of equity and confidentiality to the methods in which they store and communicate patient data - only authorized personnel are able to access records for specific patients, for instance, and these personnel (e.g. physicians, nurses) are trained to make decisions in a manner that is in keeping with the patient's based interest based on the data stored. 
 
+Financial databases have a duty to maintain the privacy of their users in order to protect their financial interests, and also must maintain accuracy when reporting on market trends so as not to defraud their clients. Here, we may see marginalization at play as certain members of society (e.g. insider traders) may be privy to certain types of data that less privileged individuals may not be aware of, which would consequently inform how they interact with the platform. 
+
+We see more marginalization at play on social media, where user data can be harvested and used to develop algorithmic content feeds that will often reinforce inflammatory content or outright misinformation in order to promote engagement with the app. These algorithms can be considered predatory in that marginalized populations may more easily be influenced or taken advantage of by larger institutions or corporate entities with an incentive to influence or engineer social behaviours at scale. With their emphasis on user engagement over values like equitable access to accurate information or journalistic integrity, social media databases may use user data in a socially-irresponsible manner, and in a way that may have knock-on effects on socio-political movements (e.g., feeding vaccine misinformation to populations primed to be susceptible, consequently driving "anti-vaxx" movements during COVID-19).
 ```
 Your thoughts...
 ```
