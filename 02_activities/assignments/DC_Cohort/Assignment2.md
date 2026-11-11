@@ -57,7 +57,26 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Architecture 1 - Overwrite (Type 1 slowly changing dimension)
+CUSTOMER_ADDRESS table columns:
+  address_id (PK), customer_id (FK), street_address, city, province, postal_code, country
+
+Each customer has one row in this table. When a customer moves, we UPDATE their row
+with the new address so the old address is gone. Keeps the table small
+but loses all history.
+
+Architecture 2 - Retain changes (Type 2 slowly changing dimension)
+CUSTOMER_ADDRESS table columns:
+  address_id (PK), customer_id (FK), street_address, city, province, postal_code, country,
+  start_date, end_date, is_current
+
+When a customer moves, we don't change the old row except to set its end_date and change
+is_current to 0. Then we INSERT a new row with the new address, today's start_date, a
+NULL end_date and is_current = 1. A customer can have many rows over time, so we keep a full
+history of their addresses. Table grows bigger and to get someone's current address
+we have to filter WHERE is_current = 1.
+
+So the overwrite version is Type 1, and the version that keeps the changes is Type 2.
 ```
 
 ***
@@ -193,5 +212,8 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 
 ```
-Your thoughts...
+The misattribution or complete lack of attribution of the labour underpinning training datasets foundational for machine learning is the primary ethical issue raised in this story. Automation can only go so far, as at some base level of analysis human judgement and manual annotations of data must be performed to get the ball rolling, so to speak. As a researcher in Molecular Genetics, I see this as a very prevalent truth in my field – as the barrier to analyzing huge amounts of multi-omic (genomic, transcriptomic, proteomic, etc.) data across millions of cells becomes lower, and LLMs have made computational research significantly more approachable, the bottleneck for analysis becomes the manual production of that data in the wet lab. Lofty claims that AI will render scientific research and drug development near obsolete are severely undercut by the fact that everything hinges on the quality and availability of training data. Moreover, companies with impending billion-dollar valuations like Anthropic will become increasingly reliant on the intensive labour of graduate students (similar to the annotation work done by grad students referenced in this story) – graduate students who are compensated, by comparison, incredibly poorly for their labour. 
+
+As analysis and computation become more streamlined and users are able to interface with this systems seamlessly using natural language, I can foresee judgement and discernment becoming perhaps even more genuinely valuable skills than computational prowess. Knowing how to annotate a training dataset, understanding the biases inherent in how the dataset was made, and communicating the insights that can therefore be drawn from any models trained off of it will be crucial to integrate these models into society in a way that does not reinforce existing biases. All of this also begs the question – who gets to build out training datasets, and whose data is included in these datasets? As machine learning models and LLMs become more “trusted” sources of information and can be used to build and propagate politically-impactful narratives, the power (and abuses thereof) inherent in driving how a supposedly “unbiased” or “impartial” model views the world is something to be closely watched and treated with immense caution. 
+
 ```
